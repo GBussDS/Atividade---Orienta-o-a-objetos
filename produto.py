@@ -1,8 +1,12 @@
 class Produto:
 
-    def __init__(self, categoria, codigo_de_barras, preco):
+    #Atributo estatico
+    codigo_barras_atual = 0
+
+    def __init__(self, categoria, preco):
         self.categoria = categoria
-        self.codigo_de_barras = codigo_de_barras
+        Produto.codigo_barras_atual = Produto.codigo_barras_atual + 1
+        self.codigo_de_barras = Produto.codigo_barras_atual
         self.preco = preco
     
     #Retorna o código de barras
@@ -19,8 +23,8 @@ class Produto:
 
 class Roupa(Produto):
 
-    def __init__(self, codigo_de_barras, preco, tipo, cor, marca):
-        super().__init__("Roupa", codigo_de_barras, preco)
+    def __init__(self, preco, tipo, cor, marca):
+        super().__init__("Roupa", preco)
         self.tipo = tipo
         self.cor = cor
         self.marca = marca
@@ -30,8 +34,8 @@ class Roupa(Produto):
 
 class Manga(Produto):
 
-    def __init__(self, codigo_de_barras, preco, titulo, autor, genero, bTraduzido):
-        super().__init__("Manga", codigo_de_barras, preco)
+    def __init__(self, preco, titulo, autor, genero, bTraduzido):
+        super().__init__("Manga", preco)
         self.titulo = titulo
         self.autor = autor
         self.genero = genero
@@ -46,8 +50,8 @@ class Manga(Produto):
 
 class Jogo(Produto):
     
-    def __init__(self, codigo_de_barras, preco, nome, console, ano_lancamento):
-        super().__init__("Jogo", codigo_de_barras, preco)
+    def __init__(self, preco, nome, console, ano_lancamento):
+        super().__init__("Jogo", preco)
         self.nome = nome
         self.console = console
         self.ano_lancamento = ano_lancamento
@@ -55,7 +59,6 @@ class Jogo(Produto):
     def jogar(self):
         print(f"Você está jogando {self.nome} lançado em {self.ano_lancamento} em um {self.console}.\n")
 
-# calca = Roupa("001", 100, "Calça", "Preta", "Nike")
-# anime = Manga("002", 20, "Attack On Titan", "Hajime Isayama", "Shounen", False)
-# clashroyale = Jogo("003", 10, "Clash Royale", "Android", 2016)
-            
+# calca = Roupa(100, "Calça", "Preta", "Nike")
+# anime = Manga(20, "Attack On Titan", "Hajime Isayama", "Shounen", False)
+# clashroyale = Jogo(10, "Clash Royale", "Android", 2016)
