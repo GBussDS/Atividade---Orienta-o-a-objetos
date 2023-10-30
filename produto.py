@@ -62,6 +62,12 @@ class Manga(Produto):
         else:
             print(f"Você está lendo {self.titulo}, escrito por {self.autor}.")
             print("Como você sabe japonês?\n")
+    
+    def get_titulo(self):
+        if self.bTraduzido:
+            return f"{self.titulo} traduzido"
+        else:
+            return f"{self.titulo}"
 
 class Jogo(Produto):
     
@@ -72,6 +78,15 @@ class Jogo(Produto):
 
     def jogar(self):
         print(f"Você está jogando {self.nome} em um {self.console}.\n")
+
+    #Retorna o nome do jogo
+    def get_nome(self):
+        return self.nome
+
+    #Retorna o console do jogo
+    def get_console(self):
+        return self.console
+
 
 # calca = Roupa(100, "Nike", "Calça", "Preta")
 # anime = Manga(20, "Anime", "Attack On Titan","Shounen", False)
