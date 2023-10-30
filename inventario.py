@@ -18,10 +18,15 @@ class Inventario():
         produto = produto.get_nome_estoque()
 
         try:
+            if produto not in self.estoque[tipo_produto]:
+                self.estoque[tipo_produto][produto] = 0
+        
             quantidade_atual = self.estoque[tipo_produto][produto]
-        except:
-            quantidade_atual = 0
-        self.estoque[tipo_produto][produto] = quantidade_atual + quantidade_adicionada
+
+            self.estoque[tipo_produto][produto] = quantidade_atual + quantidade_adicionada
+        except KeyError:
+            print("Não existe estoque para esse tipo de produto ainda!")
+        
 
     #Remove uma certa quantidade do produto do estoque.
     def vender(self, produto, quantidade_vendida):
@@ -64,22 +69,3 @@ class Inventario():
             inventario += f"{tipo_produto}: {self.estoque[tipo_produto]}\n"
         
         return inventario
-
-Inventario = Inventario()
-Inventario.criar_estoque("Roupa")
-Inventario.criar_estoque("Manga")
-Inventario.criar_estoque("Jogo")
-
-calca = Roupa(100, "Nike", "Calça", "Preta")
-anime = Manga(20, "Anime", "Attack On Titan","Shounen", False)
-anime2 = Manga(20, "Anime", "Attack On Titan","Shounen", True)
-clashroyale = Jogo(10, "supercell", "Clash Royale", "Android")
-
-Inventario.adicionar_estoque(calca, 10)
-Inventario.adicionar_estoque(anime, 10)
-Inventario.adicionar_estoque(anime2, 5)
-Inventario.adicionar_estoque(clashroyale, 2)
-
-Inventario.vender(clashroyale, 3)
-
-print(Inventario)
