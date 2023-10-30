@@ -9,6 +9,7 @@ class Produto:
         self.codigo_de_barras = Produto.codigo_barras_atual
         self.preco = preco
         self.marca = marca
+        self.nome_estoque = ""
     
     #Retorna o código de barras
     def get_codigo_de_barras(self):
@@ -25,6 +26,9 @@ class Produto:
     #Retorna a marca
     def get_marca(self):
         return self.marca
+    
+    def get_nome_estoque(self):
+        return self.nome_estoque
 
     #Define como o produto vai ser printado
     def __str__(self):
@@ -36,6 +40,7 @@ class Roupa(Produto):
         super().__init__("Roupa", preco, marca)
         self.tipo = tipo
         self.cor = cor
+        self.nome_estoque = f"{self.tipo} {self.cor}"
 
     def vestir(self):
         print(f"Você está vestindo {self.tipo} da cor {self.cor} da marca {self.marca}.\n")
@@ -55,6 +60,10 @@ class Manga(Produto):
         self.titulo = titulo
         self.autor = autor
         self.bTraduzido = bTraduzido
+        if self.bTraduzido:
+            self.nome_estoque = f"{self.titulo} traduzido"
+        else:
+            self.nome_estoque = f"{self.titulo}"
 
     def ler(self):
         if self.bTraduzido == "sim" or self.bTraduzido:
@@ -75,6 +84,7 @@ class Jogo(Produto):
         super().__init__("Jogo", preco, marca)
         self.nome = nome
         self.console = console
+        self.nome_estoque = f"{self.nome} {self.console}"
 
     def jogar(self):
         print(f"Você está jogando {self.nome} em um {self.console}.\n")

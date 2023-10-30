@@ -15,15 +15,7 @@ class Inventario():
     def adicionar_estoque(self, produto, quantidade_adicionada):
 
         tipo_produto = produto.get_categoria()
-
-        if produto.get_categoria() == "Roupa":
-            produto = f"{produto.get_tipo()} {produto.get_cor()}"
-
-        elif produto.get_categoria() == "Manga":
-            produto = f"{produto.get_titulo()}"
-
-        elif produto.get_categoria() == "Jogo":
-            produto = f"{produto.get_nome()} {produto.get_console()}"
+        produto = produto.get_nome_estoque()
 
         try:
             quantidade_atual = self.estoque[tipo_produto][produto]
@@ -32,7 +24,11 @@ class Inventario():
         self.estoque[tipo_produto][produto] = quantidade_atual + quantidade_adicionada
 
     #Remove uma certa quantidade do produto do estoque.
-    def vender(self, tipo_produto, produto, quantidade_vendida):
+    def vender(self, produto, quantidade_vendida):
+
+        tipo_produto = produto.get_categoria()
+        produto = produto.get_nome_estoque()
+
         try:
             quantidade_atual = self.estoque[tipo_produto][produto]
             if quantidade_atual == 0:
@@ -46,7 +42,11 @@ class Inventario():
         except ValueError:
             print("Quantidade vendida é maior que quantidade em estoque.")
     
-    def checar_estoque(self, tipo_produto, produto):
+    def checar_estoque(self, produto):
+
+        tipo_produto = produto.get_categoria()
+        produto = produto.get_nome_estoque()
+
         try:
             quantidade_atual = self.estoque[tipo_produto][produto]
     
@@ -79,5 +79,7 @@ Inventario.adicionar_estoque(calca, 10)
 Inventario.adicionar_estoque(anime, 10)
 Inventario.adicionar_estoque(anime2, 5)
 Inventario.adicionar_estoque(clashroyale, 2)
+
+Inventario.vender(clashroyale, 3)
 
 print(Inventario)
