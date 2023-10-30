@@ -2,10 +2,8 @@ from produto import Roupa, Manga, Jogo
 
 class Inventario():
 
-    estoque = {}
-
     def __init__(self):
-        pass
+        self.estoque = {}
     
     #Inicializa um estoque para um certo tipo de produto
     def criar_estoque(self, tipo_produto):
