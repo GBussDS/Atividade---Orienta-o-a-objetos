@@ -96,8 +96,3 @@ class Jogo(Produto):
     #Retorna o console do jogo
     def get_console(self):
         return self.console
-
-
-# calca = Roupa(100, "Nike", "Calça", "Preta")
-# anime = Manga(20, "Anime", "Attack On Titan","Shounen", False)
-# clashroyale = Jogo(10, "supercell", "Clash Royale", "Android")

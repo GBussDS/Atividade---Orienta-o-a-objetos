@@ -6,26 +6,26 @@ from enum import Enum
 class Marcas(Enum):
     NIKE = 1
     SUPERCELL = 2
-    HONOKAMI = 3
+    HINOKAMI = 3
 
-estoque = Inventario()
+Invent = Inventario()
 
-estoque.criar_estoque("Roupa")
-estoque.criar_estoque("Manga")
-estoque.criar_estoque("Jogo")
+Invent.criar_estoque("Roupa")
+Invent.criar_estoque("Manga")
+Invent.criar_estoque("Jogo")
 
-calca = Roupa(100, "Nike", "Calça", "Preta")
-manga1 = Manga(20, "Anime", "Attack On Titan","Shounen", False)
-manga2 = Manga(20, "Anime", "Attack On Titan","Shounen", True)
-subnautica = Jogo(10, "naosei", "Subnautica", "PC")
+calca = Roupa(100, Marcas.NIKE.name, "Calça", "Preta")
+manga1 = Manga(20, Marcas.HINOKAMI.name, "Attack On Titan","Shounen", False)
+manga2 = Manga(20, Marcas.HINOKAMI.name, "Attack On Titan","Shounen", True)
+subnautica = Jogo(10, Marcas.SUPERCELL.name, "Subnautica", "PC")
 
-estoque.adicionar_estoque(calca, 10)
-estoque.adicionar_estoque(manga1, 5)
-estoque.adicionar_estoque(manga2, 7)
-estoque.adicionar_estoque(subnautica, 1)
+Invent.adicionar_estoque(calca, 10)
+Invent.adicionar_estoque(manga1, 5)
+Invent.adicionar_estoque(manga2, 7)
+Invent.adicionar_estoque(subnautica, 1)
 
-print(estoque)
+print(Invent)
 
-estoque.vender(subnautica, 1)
+Invent.vender(manga1, 5)
 
-estoque.checar_estoque(subnautica)
+Invent.checar_estoque(manga1)

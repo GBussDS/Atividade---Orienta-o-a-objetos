@@ -19,10 +19,15 @@ class Inventario():
         produto = produto.get_nome_estoque()
 
         try:
+            if produto not in self.estoque[tipo_produto]:
+                self.estoque[tipo_produto][produto] = 0
+        
             quantidade_atual = self.estoque[tipo_produto][produto]
-        except:
-            quantidade_atual = 0
-        self.estoque[tipo_produto][produto] = quantidade_atual + quantidade_adicionada
+
+            self.estoque[tipo_produto][produto] = quantidade_atual + quantidade_adicionada
+        except KeyError:
+            print("Não existe estoque para esse tipo de produto ainda!")
+        
 
     #Remove uma certa quantidade do produto do estoque.
     def vender(self, produto, quantidade_vendida):
