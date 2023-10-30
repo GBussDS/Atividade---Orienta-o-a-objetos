@@ -24,6 +24,11 @@ Invent.adicionar_estoque(manga1, 5)
 Invent.adicionar_estoque(manga2, 7)
 Invent.adicionar_estoque(subnautica, 1)
 
+Invent.vender(calca, 10)
+Invent.vender(manga1, 5)
+Invent.vender(manga2, 7)
+Invent.vender(subnautica, 1)
+
 print(Invent)
 
 Invent.vender(manga1, 5)
