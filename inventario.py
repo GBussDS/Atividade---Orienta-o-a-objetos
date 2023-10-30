@@ -1,6 +1,9 @@
+import produto
+
 class Inventario():
 
     estoque = {}
+
     def __init__(self):
         pass
     
@@ -10,6 +13,7 @@ class Inventario():
 
     #Adiciona ao tipo de produto o produto e sua quantidade
     def adicionar_estoque(self, tipo_produto, produto, quantidade_adicionada):
+
         try:
             quantidade_atual = self.estoque[tipo_produto][produto]
         except:
